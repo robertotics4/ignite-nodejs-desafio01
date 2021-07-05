@@ -34,14 +34,12 @@ class UsersRepository implements IUsersRepository {
   }
 
   findById(id: string): User | undefined {
-    const user = this.users.find((user) => user.id === id);
-
+    const user = this.users.find(user => user.id === id);
     return user;
   }
 
   findByEmail(email: string): User | undefined {
-    const user = this.users.find((user) => user.email === email);
-
+    const user = this.users.find(user => user.email === email);
     return user;
   }
 
@@ -52,14 +50,11 @@ class UsersRepository implements IUsersRepository {
       updated_at: new Date(),
     });
 
-    this.users.forEach((user) => {
+    this.users.forEach(user => {
       if (receivedUser.id === user.id) {
-        Object.assign(user, {
-          ...receivedUser,
-        });
+        Object.assign(user, receivedUser);
       }
     });
-
     return receivedUser;
   }
 
